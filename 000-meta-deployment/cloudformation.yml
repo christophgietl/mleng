@@ -71,8 +71,8 @@ Resources:
                 ActionMode: CREATE_UPDATE
                 RoleArn: !GetAtt CloudFormationRole.Arn
                 StackName: !Ref DeploymentStackName
-                TemplateConfiguration: share/configuration.cloudformation.json
-                TemplatePath: 100-deployment/cloudformation.yml
+                TemplateConfiguration: repo::share/configuration.cloudformation.json
+                TemplatePath: repo::100-deployment/cloudformation.yml
               InputArtifacts:
                 - Name: repo
 

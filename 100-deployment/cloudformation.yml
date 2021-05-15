@@ -67,8 +67,8 @@ Resources:
                 ActionMode: CREATE_UPDATE
                 RoleArn: !GetAtt CloudFormationRole.Arn
                 StackName: !Ref MarketplaceStackName
-                TemplateConfiguration: share/configuration.cloudformation.json
-                TemplatePath: 200-marketplace/cloudformation.yml
+                TemplateConfiguration: repo::share/configuration.cloudformation.json
+                TemplatePath: repo::200-marketplace/cloudformation.yml
               InputArtifacts:
                 - Name: repo
 
