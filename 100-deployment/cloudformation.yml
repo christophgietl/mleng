@@ -41,6 +41,7 @@ Resources:
           PolicyDocument:
             Statement:
               Action:
+                - ec2:DescribeAccountAttributes
                 - secretsmanager:*
               Effect: Allow
               Resource: "*"
