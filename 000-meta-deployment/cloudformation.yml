@@ -36,6 +36,23 @@ Resources:
           Effect: Allow
           Principal:
             Service: cloudformation.amazonaws.com
+      Policies:
+        - PolicyName: ManageResources
+          PolicyDocument:
+            Statement:
+              Action:
+                - codepipeline:*Pipeline*
+                - iam:*Role
+                - iam:*RolePolicy
+                - s3:*Bucket
+              Effect: Allow
+              Resource: "*"
+        - PolicyName: PassCodeStarConnection
+          PolicyDocument:
+            Statement:
+              Action: codestar-connections:PassConnection
+              Effect: Allow
+              Resource: !Ref CodeStarSourceConnectionArn
 
   Pipeline:
     Type: AWS::CodePipeline::Pipeline
