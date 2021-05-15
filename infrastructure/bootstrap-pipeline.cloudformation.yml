@@ -17,6 +17,10 @@ Parameters:
     Default: christophgietl/demo-ml-ops
     Type: String
 
+  PipelineStackName:
+    Default: demo-ml-ops-pipelines
+    Type: String
+
 
 Resources:
 
@@ -59,7 +63,7 @@ Resources:
                 - Name: repo
         - Name: Deploy
           Actions:
-            - Name: DeployCloudFormationStackPipelines
+            - Name: DeployStackPipelines
               ActionTypeId:
                 Category: Deploy
                 Owner: AWS
@@ -68,7 +72,7 @@ Resources:
               Configuration:
                 ActionMode: CREATE_UPDATE
                 RoleArn: !GetAtt CloudFormationRole.Arn
-                StackName: demo-ml-ops-pipelines
+                StackName: !Ref PipelineStackName
                 TemplatePath: repo::infrastructure/pipelines.cloudformation.yml
               InputArtifacts:
                 - Name: repo
@@ -83,18 +87,26 @@ Resources:
           Principal:
             Service: codepipeline.amazonaws.com
       Policies:
-        - PolicyName: DescribeCloudFormationStacks
+        - PolicyName: CreateCloudFormationStack
           PolicyDocument:
             Statement:
-              Action: cloudformation:DescribeStacks
+              Action:
+                - cloudformation:CreateStack
+                - cloudformation:DescribeStacks
               Effect: Allow
-              Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/*
+              Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${PipelineStackName}/*
         - PolicyName: UseCodeStarConnection
           PolicyDocument:
             Statement:
               Action: codestar-connections:UseConnection
               Effect: Allow
               Resource: !Ref CodeStarSourceConnectionArn
+        - PolicyName: PassCloudFormationRole
+          PolicyDocument:
+            Statement:
+              Action: iam:PassRole
+              Effect: Allow
+              Resource: !GetAtt CloudFormationRole.Arn
         - PolicyName: ReadAndWriteArtifacts
           PolicyDocument:
             Statement:
