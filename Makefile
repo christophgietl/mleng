@@ -1,6 +1,6 @@
 SOURCE_CONNECTION_ARN ?= arn:aws:codestar-connections:eu-central-1:004068267802:connection/8a1ebf08-92e0-4975-a1a1-16334c8a372f
 STACK_NAME ?= demo-ml-ops-bootstrap-pipeline
-STACK_TEMPLATE_BODY ?= file://infrastructure/bootstrap-pipeline.cloudformation.yml
+STACK_TEMPLATE_BODY ?= file://global/infrastructure/bootstrap-pipeline.cloudformation.yml
 
 create_stack_bootstrap_pipeline:	## Create CloudFormation stack named ${STACK_NAME} based on ${STACK_TEMPLATE_BODY}
 	aws cloudformation create-stack \

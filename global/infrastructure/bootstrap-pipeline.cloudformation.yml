@@ -73,7 +73,7 @@ Resources:
                 ActionMode: CREATE_UPDATE
                 RoleArn: !GetAtt CloudFormationRole.Arn
                 StackName: !Ref PipelineStackName
-                TemplatePath: repo::infrastructure/pipelines.cloudformation.yml
+                TemplatePath: repo::global/infrastructure/pipelines.cloudformation.yml
               InputArtifacts:
                 - Name: repo
 
