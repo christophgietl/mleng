@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: 2010-09-09
 
 
-Description: Bootstrap pipeline for deploying the pipeline stack
+Description: Meta deployment pipeline for deploying the deployment pipelines
 
 
 Parameters:
@@ -17,8 +17,8 @@ Parameters:
     Default: christophgietl/demo-ml-ops
     Type: String
 
-  PipelineStackName:
-    Default: demo-ml-ops-pipelines
+  DeploymentStackName:
+    Default: demo-ml-ops-100-deployment
     Type: String
 
 
@@ -72,8 +72,8 @@ Resources:
               Configuration:
                 ActionMode: CREATE_UPDATE
                 RoleArn: !GetAtt CloudFormationRole.Arn
-                StackName: !Ref PipelineStackName
-                TemplatePath: repo::100-deployment-pipelines/cloudformation.yml
+                StackName: !Ref DeploymentStackName
+                TemplatePath: repo::100-deployment/cloudformation.yml
               InputArtifacts:
                 - Name: repo
 
@@ -94,7 +94,7 @@ Resources:
                 - cloudformation:CreateStack
                 - cloudformation:DescribeStacks
               Effect: Allow
-              Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${PipelineStackName}/*
+              Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${DeploymentStackName}/*
         - PolicyName: UseCodeStarConnection
           PolicyDocument:
             Statement:
