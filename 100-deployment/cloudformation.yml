@@ -36,6 +36,14 @@ Resources:
           Effect: Allow
           Principal:
             Service: cloudformation.amazonaws.com
+      Policies:
+        - PolicyName: ManageResources
+          PolicyDocument:
+            Statement:
+              Action:
+                - secretsmanager:*
+              Effect: Allow
+              Resource: "*"
 
   MarketPlacePipeline:
     Type: AWS::CodePipeline::Pipeline
