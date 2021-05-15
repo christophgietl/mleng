@@ -69,7 +69,7 @@ Resources:
                 ActionMode: CREATE_UPDATE
                 RoleArn: !GetAtt CloudFormationRole.Arn
                 StackName: demo-ml-ops-pipelines
-                TemplatePath: infrastructure/pipelines.cloudformation.yml
+                TemplatePath: repo::infrastructure/pipelines.cloudformation.yml
               InputArtifacts:
                 - Name: repo
 
