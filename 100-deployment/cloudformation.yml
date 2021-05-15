@@ -4,6 +4,18 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: Deployment pipelines
 
 
+Parameters:
+
+  CodeStarSourceConnectionArn:
+    Type: String
+
+  CodeStarSourceConnectionBranchName:
+    Type: String
+
+  CodeStarSourceConnectionFullRepositoryId:
+    Type: String
+
+
 Resources:
 
   ArtifactStore:
