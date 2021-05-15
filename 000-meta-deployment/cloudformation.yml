@@ -10,11 +10,9 @@ Parameters:
     Type: String
 
   CodeStarSourceConnectionBranchName:
-    Default: main
     Type: String
 
   CodeStarSourceConnectionFullRepositoryId:
-    Default: christophgietl/demo-ml-ops
     Type: String
 
   DeploymentStackName:
@@ -73,7 +71,8 @@ Resources:
                 ActionMode: CREATE_UPDATE
                 RoleArn: !GetAtt CloudFormationRole.Arn
                 StackName: !Ref DeploymentStackName
-                TemplatePath: repo::100-deployment/cloudformation.yml
+                TemplateConfiguration: share/configuration.cloudformation.json
+                TemplatePath: 100-deployment/cloudformation.yml
               InputArtifacts:
                 - Name: repo
 
