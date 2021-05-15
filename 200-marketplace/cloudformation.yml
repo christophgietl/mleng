@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+
+Description: Operative platform for a real estate marketplace
+
+
+Resources:
+
+  Database:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceClass: db.t3.micro
+      Engine: postgres

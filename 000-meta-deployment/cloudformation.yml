@@ -27,7 +27,7 @@ Resources:
   ArtifactStore:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub ${AWS::AccountId}-artifact-store
+      BucketName: !Sub ${AWS::AccountId}-${AWS::StackName}-artifact-store
 
   CloudFormationRole:
     Type: AWS::IAM::Role
@@ -63,7 +63,7 @@ Resources:
                 - Name: repo
         - Name: Deploy
           Actions:
-            - Name: DeployStackPipelines
+            - Name: DeployStackDeployment
               ActionTypeId:
                 Category: Deploy
                 Owner: AWS
