@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+
+Description: Pipelines for MLOps demo
+
+
+Resources:
+
+  DemoBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-demo-bucket
