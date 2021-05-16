@@ -97,16 +97,21 @@ Resources:
         Type: CODEPIPELINE
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
-        Image: aws/codebuild/standard:4.0
+        Image: aws/codebuild/standard:5.0
         Type: LINUX_CONTAINER
       ServiceRole: !Ref MarketPlaceBuildProjectServiceRole
       Source:
         BuildSpec: |
           version: 0.2
           phases:
+            install:
+              commands:
+                - pip install dbt-postgres~=0.19.1
+              runtime-versions:
+                python: 3.9
             build:
               commands:
-                - echo 1
+                - dbt --version
         Type: CODEPIPELINE
 
   MarketPlaceBuildProjectServiceRole:
