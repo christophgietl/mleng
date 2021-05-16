@@ -41,6 +41,7 @@ Resources:
             Statement:
               Action:
                 - ec2:DescribeAccountAttributes
+                - ec2:DescribeSecurityGroups
                 - rds:CreateDBInstance
                 - rds:DeleteDBInstance
                 - rds:DescribeDBInstances
@@ -49,6 +50,7 @@ Resources:
                 - secretsmanager:DeleteSecret
                 - secretsmanager:GetRandomPassword
                 - secretsmanager:GetSecretValue
+                - secretsmanager:PutSecretValue
                 - secretsmanager:TagResource
                 - secretsmanager:UntagResource
                 - secretsmanager:UpdateSecret
