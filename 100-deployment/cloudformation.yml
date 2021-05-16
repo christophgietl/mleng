@@ -15,8 +15,7 @@ Parameters:
   CodeStarSourceConnectionFullRepositoryId:
     Type: String
 
-  MarketplaceStackName:
-    Default: demo-ml-ops-200-marketplace
+  ProjectName:
     Type: String
 
 
@@ -79,7 +78,7 @@ Resources:
               Configuration:
                 ActionMode: CREATE_UPDATE
                 RoleArn: !GetAtt CloudFormationRole.Arn
-                StackName: !Ref MarketplaceStackName
+                StackName: !Sub ${ProjectName}-200-marketplace
                 TemplatePath: repo::200-marketplace/cloudformation.yml
               InputArtifacts:
                 - Name: repo
@@ -102,7 +101,7 @@ Resources:
                 - cloudformation:DescribeStacks
                 - cloudformation:UpdateStack
               Effect: Allow
-              Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/*/*
+              Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${ProjectName}-*/*
         - PolicyName: UseCodeStarConnection
           PolicyDocument:
             Statement:

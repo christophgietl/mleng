@@ -15,8 +15,7 @@ Parameters:
   CodeStarSourceConnectionFullRepositoryId:
     Type: String
 
-  DeploymentStackName:
-    Default: demo-ml-ops-100-deployment
+  ProjectName:
     Type: String
 
 
@@ -100,7 +99,7 @@ Resources:
                 ActionMode: CREATE_UPDATE
                 Capabilities: CAPABILITY_IAM
                 RoleArn: !GetAtt CloudFormationRole.Arn
-                StackName: !Ref DeploymentStackName
+                StackName: !Sub ${ProjectName}-100-deployment
                 TemplateConfiguration: repo::share/configuration.cloudformation.json
                 TemplatePath: repo::100-deployment/cloudformation.yml
               InputArtifacts:
@@ -124,7 +123,7 @@ Resources:
                 - cloudformation:DescribeStacks
                 - cloudformation:UpdateStack
               Effect: Allow
-              Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${DeploymentStackName}/*
+              Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${ProjectName}-100-deployment/*
         - PolicyName: UseCodeStarConnection
           PolicyDocument:
             Statement:

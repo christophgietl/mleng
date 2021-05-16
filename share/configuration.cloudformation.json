@@ -2,6 +2,7 @@
   "Parameters": {
     "CodeStarSourceConnectionArn": "arn:aws:codestar-connections:eu-central-1:004068267802:connection/8a1ebf08-92e0-4975-a1a1-16334c8a372f",
     "CodeStarSourceConnectionBranchName": "main",
-    "CodeStarSourceConnectionFullRepositoryId": "christophgietl/demo-ml-ops"
+    "CodeStarSourceConnectionFullRepositoryId": "christophgietl/demo-ml-ops",
+    "ProjectName": "demo-ml-ops"
   }
 }
