@@ -41,9 +41,35 @@ Resources:
             Statement:
               Action:
                 - ec2:DescribeAccountAttributes
-                - secretsmanager:*
+                - rds:CreateDBInstance
+                - rds:DeleteDBInstance
+                - rds:DescribeDBInstances
+                - rds:ModifyDBInstance
+                - secretsmanager:CreateSecret
+                - secretsmanager:DeleteSecret
+                - secretsmanager:GetRandomPassword
+                - secretsmanager:GetSecretValue
+                - secretsmanager:TagResource
+                - secretsmanager:UntagResource
+                - secretsmanager:UpdateSecret
               Effect: Allow
               Resource: "*"
+        - PolicyName: CreateServiceLinkedRoleForRDS
+          # cf. https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#service-linked-role-permissions
+          PolicyDocument:
+            Statement:
+              - Action: iam:CreateServiceLinkedRole
+                Condition:
+                  StringLike:
+                    iam:AWSServiceName: rds.amazonaws.com
+                Effect: Allow
+                Resource: arn:aws:iam::*:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS*
+              - Action:
+                  - iam:AttachRolePolicy,
+                  - iam:PutRolePolicy
+                Effect: Allow
+                Resource: arn:aws:iam::*:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS*
+
 
   MarketPlacePipeline:
     Type: AWS::CodePipeline::Pipeline
