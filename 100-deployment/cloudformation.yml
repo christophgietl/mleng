@@ -94,12 +94,13 @@ Resources:
           Principal:
             Service: codepipeline.amazonaws.com
       Policies:
-        - PolicyName: CreateCloudFormationStacks
+        - PolicyName: ManageCloudFormationStacks
           PolicyDocument:
             Statement:
               Action:
                 - cloudformation:CreateStack
                 - cloudformation:DescribeStacks
+                - cloudformation:UpdateStack
               Effect: Allow
               Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/*/*
         - PolicyName: UseCodeStarConnection
