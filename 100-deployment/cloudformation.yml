@@ -106,6 +106,8 @@ Resources:
           phases:
             install:
               commands:
+                - pyenv virtualenv dbt
+                - pyenv global dbt
                 - pip install dbt-postgres~=0.19.1
               runtime-versions:
                 python: 3.9
