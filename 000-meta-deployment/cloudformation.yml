@@ -41,10 +41,22 @@ Resources:
           PolicyDocument:
             Statement:
               Action:
-                - codepipeline:*Pipeline*
-                - iam:*Role
-                - iam:*RolePolicy
-                - s3:*Bucket
+                - codepipeline:CreatePipeline
+                - codepipeline:DeletePipeline
+                - codepipeline:GetPipeline
+                - codepipeline:GetPipelineState
+                - codepipeline:UpdatePipeline
+                - iam:CreateRole
+                - iam:DeleteRole
+                - iam:DeleteRolePolicy
+                - iam:GetRole
+                - iam:GetRolePolicy
+                - iam:PassRole
+                - iam:PutRolePolicy
+                - iam:UpdateRole
+                - s3:CreateBucket
+                - s3:DeleteBucket
+                - s3:ListBucket
               Effect: Allow
               Resource: "*"
         - PolicyName: PassCodeStarConnection
