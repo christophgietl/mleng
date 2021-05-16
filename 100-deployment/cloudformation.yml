@@ -26,6 +26,24 @@ Resources:
     Properties:
       BucketName: !Sub ${AWS::AccountId}-${AWS::StackName}-artifact-store
 
+  ArtifactStorePolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ArtifactStore
+      PolicyDocument:
+        Statement:
+          Action:
+            - s3:GetObject
+            - s3:GetObjectVersion
+            - s3:PutObject
+            - s3:PutObjectAcl
+          Effect: Allow
+          Principal:
+            AWS:
+              - !GetAtt MarketPlaceBuildProjectServiceRole.Arn
+              - !GetAtt PipelineRole.Arn
+          Resource: !Sub ${ArtifactStore.Arn}/*
+
   CloudFormationRole:
     Type: AWS::IAM::Role
     Properties:
@@ -72,6 +90,45 @@ Resources:
                 Effect: Allow
                 Resource: arn:aws:iam::*:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS*
 
+  MarketPlaceBuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/standard:4.0
+        Type: LINUX_CONTAINER
+      ServiceRole: !Ref MarketPlaceBuildProjectServiceRole
+      Source:
+        BuildSpec: |
+          version: 0.2
+          phases:
+            build:
+              commands:
+                - echo 1
+        Type: CODEPIPELINE
+
+  MarketPlaceBuildProjectServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: codebuild.amazonaws.com
+      Policies:
+        - PolicyName: ManageLogs
+          PolicyDocument:
+            Statement:
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:GetLogEvents
+                - logs:PutLogEvents
+              Effect: Allow
+              Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*
 
   MarketPlacePipeline:
     Type: AWS::CodePipeline::Pipeline
@@ -95,7 +152,7 @@ Resources:
                 FullRepositoryId: !Ref CodeStarSourceConnectionFullRepositoryId
               OutputArtifacts:
                 - Name: repo
-        - Name: Deploy
+        - Name: DeployInfrastructure
           Actions:
             - Name: DeployStackMarketplace
               ActionTypeId:
@@ -108,6 +165,18 @@ Resources:
                 RoleArn: !GetAtt CloudFormationRole.Arn
                 StackName: !Sub ${ProjectName}-200-marketplace
                 TemplatePath: repo::200-marketplace/cloudformation.yml
+              InputArtifacts:
+                - Name: repo
+        - Name: DeployData
+          Actions:
+            - Name: DeployData
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref MarketPlaceBuildProject
               InputArtifacts:
                 - Name: repo
 
@@ -130,6 +199,16 @@ Resources:
                 - cloudformation:UpdateStack
               Effect: Allow
               Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${ProjectName}-*/*
+        - PolicyName: ManageCodeBuildBuilds
+          PolicyDocument:
+            Statement:
+              Action:
+                - codebuild:BatchGetBuilds
+                - codebuild:RetryBuild
+                - codebuild:StartBuild
+                - codebuild:StopBuild
+              Effect: Allow
+              Resource: !GetAtt MarketPlaceBuildProject.Arn
         - PolicyName: UseCodeStarConnection
           PolicyDocument:
             Statement:
@@ -142,13 +221,3 @@ Resources:
               Action: iam:PassRole
               Effect: Allow
               Resource: !GetAtt CloudFormationRole.Arn
-        - PolicyName: ReadAndWriteArtifacts
-          PolicyDocument:
-            Statement:
-              Action:
-                - s3:GetObject
-                - s3:GetObjectVersion
-                - s3:PutObject
-                - s3:PutObjectAcl
-              Effect: Allow
-              Resource: !Sub ${ArtifactStore.Arn}/*
