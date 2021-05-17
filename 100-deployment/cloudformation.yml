@@ -105,7 +105,7 @@ Resources:
           version: 0.2
           cache:
             paths:
-              - /root/.pip/cache
+              - /root/.pip/cache/**/*
           phases:
             install:
               commands:
