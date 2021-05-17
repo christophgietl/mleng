@@ -82,7 +82,7 @@ Resources:
       Stages:
         - Name: Source
           Actions:
-            - Name: PullRepoFromGitHub
+            - Name: GitHub
               ActionTypeId:
                 Category: Source
                 Owner: AWS
@@ -96,7 +96,7 @@ Resources:
                 - Name: repo
         - Name: Deploy
           Actions:
-            - Name: DeployStackDeployment
+            - Name: Infrastructure
               ActionTypeId:
                 Category: Deploy
                 Owner: AWS

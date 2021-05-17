@@ -103,6 +103,9 @@ Resources:
       Source:
         BuildSpec: |
           version: 0.2
+          cache:
+            paths:
+              - /root/.pip/cache
           phases:
             install:
               commands:
@@ -147,7 +150,7 @@ Resources:
       Stages:
         - Name: Source
           Actions:
-            - Name: PullRepoFromGitHub
+            - Name: GitHub
               ActionTypeId:
                 Category: Source
                 Owner: AWS
@@ -161,7 +164,7 @@ Resources:
                 - Name: repo
         - Name: DeployInfrastructure
           Actions:
-            - Name: DeployStackMarketplace
+            - Name: Infrastructure
               ActionTypeId:
                 Category: Deploy
                 Owner: AWS
@@ -176,7 +179,7 @@ Resources:
                 - Name: repo
         - Name: DeployData
           Actions:
-            - Name: DeployData
+            - Name: Data
               ActionTypeId:
                 Category: Build
                 Owner: AWS
