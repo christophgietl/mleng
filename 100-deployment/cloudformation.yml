@@ -96,8 +96,9 @@ Resources:
       Artifacts:
         Type: CODEPIPELINE
       Cache:
-        Location: !Sub ${ArtifactStore}/cache
-        Type: S3
+        Modes:
+          - LOCAL_CUSTOM_CACHE
+        Type: LOCAL
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
         Image: aws/codebuild/standard:5.0
