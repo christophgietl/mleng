@@ -19,6 +19,7 @@
         - compute (VMs, containers, FaaS)
         - storage (files, databases)
         - network
+- build and deployment (CI/CD)
 - quality assurance
     - test pyramid
     - monitoring &amp; observability

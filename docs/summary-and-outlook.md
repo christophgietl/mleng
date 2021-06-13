@@ -4,8 +4,8 @@
 
 ### Summary and outlook
 
-- In ML Operations we have to test three artefacts: code, data, and model.
-- Next week: more details on each.
+- In ML Operations we have to test three artefacts: code, training data and trained model.
+- Next week: more details on each test step.
 
 <h3 style="margin-top: 1em">Further reading</h3>
 
