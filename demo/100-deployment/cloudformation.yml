@@ -178,7 +178,7 @@ Resources:
                 ActionMode: CREATE_UPDATE
                 RoleArn: !GetAtt CloudFormationRole.Arn
                 StackName: !Sub ${ProjectName}-200-marketplace
-                TemplatePath: repo::200-marketplace/cloudformation.yml
+                TemplatePath: repo::demo/200-marketplace/cloudformation.yml
               InputArtifacts:
                 - Name: repo
         - Name: DeployData
