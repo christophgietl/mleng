@@ -110,6 +110,12 @@ Resources:
           cache:
             paths:
               - /root/.cache/pip/**/*
+          env:
+            secretsmanager:
+              MP_DB_HOST: marketplace-db:host
+              MP_DB_PORT: marketplace-db:port
+              MP_DB_USER: marketplace-db:username
+              MP_DB_PASSWORD: marketplace-db:password
           phases:
             install:
               commands:
@@ -124,11 +130,7 @@ Resources:
                 - cp demo/200-marketplace/.dbt/profiles.yml ~/.dbt/profiles.yml
             build:
               commands:
-                - echo ${CODEBUILD_SRC_DIR}
-                - ls -ahl ${CODEBUILD_SRC_DIR}
-                - ls -ahl ${CODEBUILD_SRC_DIR}/..
-                - ls -ahl ${CODEBUILD_SRC_DIR}/../01
-                - cat ${CODEBUILD_SRC_DIR}/../01/output.cloudformation.json
+                - echo $MP_DB_HOST $MP_DB_PORT $MP_DB_USER $MP_DB_PASSWORD
                 - cd demo/200-marketplace
                 - ls -ahl
                 - dbt debug

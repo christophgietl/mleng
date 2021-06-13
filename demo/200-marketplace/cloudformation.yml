@@ -18,6 +18,7 @@ Resources:
   DatabaseSecret:
     Type: AWS::SecretsManager::Secret
     Properties:
+      Name: marketplace-db
       GenerateSecretString:
         ExcludeCharacters: '"@/\'
         GenerateStringKey: password
@@ -30,10 +31,3 @@ Resources:
       SecretId: !Ref DatabaseSecret
       TargetId: !Ref DatabaseInstance
       TargetType: AWS::RDS::DBInstance
-
-
-Outputs:
-  DatabaseHost:
-    Value: !GetAtt DatabaseInstance.Endpoint.Address
-  DatabasePort:
-    Value: !GetAtt DatabaseInstance.Endpoint.Port
