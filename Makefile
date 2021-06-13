@@ -20,3 +20,6 @@ present_slides:	## Start a local webserver using gulp serve
 set_up_local_reveal_js_environment:	## Install reveal.js to allow local preview of slides
 	git submodule update --init
 	cd "${REVEAL_DIR}" && npm install
+
+set_up_local_python_environment:	## Install Python dependencies needed for development
+	pip3 install --requirement demo/200-marketplace/requirements.txt
