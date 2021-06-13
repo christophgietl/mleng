@@ -12,7 +12,7 @@ deploy_meta_deployment_stack:	## Create or update the CloudFormation stack based
 		--capabilities CAPABILITY_IAM \
 		--parameter-overrides file://demo/share/configuration.cloudformation.json \
 		--stack-name ${CF_STACK_NAME} \
-		--template-file 000-demo/meta-deployment/cloudformation.yml
+		--template-file demo/000-meta-deployment/cloudformation.yml
 
 present_slides:	## Start a local webserver using gulp serve
 	cd "${REVEAL_DIR}" && node_modules/.bin/gulp serve --root=..
