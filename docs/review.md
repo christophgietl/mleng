@@ -2,14 +2,16 @@
 
 ---
 
-### DevOps culture
+### We have learned
+
+#### DevOps culture
 
 - agile methods
 - development and operations
 
 ---
 
-### Cloud technologies &amp; methodologies
+#### Cloud technologies &amp; methodologies
 
 - infrastructure
     - management (immutable infrastructure, IaC)
@@ -23,7 +25,7 @@
 
 ---
 
-### Machine learning operations
+#### Machine learning operations
 
 - REST APIs for ML models
 - build and deployment in ML
@@ -33,3 +35,15 @@
       ←&nbsp;&thinsp;You are here!
       </strong>
     - monitoring
+
+---
+
+### We have built
+
+#### Operational stack of the King County Real Estate company
+
+TODO
+
+#### Analytical stack of the King County Real Estate company
+
+TODO
