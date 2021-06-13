@@ -208,17 +208,13 @@ Resources:
                 - Name: repo
         - Name: DeployData
           Actions:
-            - Name: HouseSalesEmpty
+            - Name: ApproveHouseSales2014
               ActionTypeId:
-                Category: Build
+                Category: Approval
                 Owner: AWS
-                Provider: CodeBuild
+                Provider: Manual
                 Version: "1"
-              Configuration:
-                ProjectName: !Ref MarketPlaceBuildProject
-              InputArtifacts:
-                - Name: repo
-              RunOrder: 1
+              RunOrder: 3
             - Name: HouseSales2014
               ActionTypeId:
                 Category: Build
@@ -230,8 +226,15 @@ Resources:
                 ProjectName: !Ref MarketPlaceBuildProject
               InputArtifacts:
                 - Name: repo
-              RunOrder: 2
-            - Name: HouseSales2015
+              RunOrder: 4
+            - Name: ApproveHouseSales2014And2015
+              ActionTypeId:
+                Category: Approval
+                Owner: AWS
+                Provider: Manual
+                Version: "1"
+              RunOrder: 5
+            - Name: HouseSales2014And2015
               ActionTypeId:
                 Category: Build
                 Owner: AWS
@@ -242,7 +245,7 @@ Resources:
                 ProjectName: !Ref MarketPlaceBuildProject
               InputArtifacts:
                 - Name: repo
-              RunOrder: 3
+              RunOrder: 6
 
   PipelineRole:
     Type: AWS::IAM::Role
