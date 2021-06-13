@@ -84,3 +84,9 @@ specific aspects of developing and operating a _machine learning_ service.
         </strong>
     <li>monitoring for this service</li>
 </ul>
+
+---
+
+#### Demo: build pipeline for the sales price prediction service
+
+[![The build pipeline does not contain any stacks yet.](images/analytical-stack.png)](https://github.com/christophgietl/mlops/tree/main/demo/300-analytics)
