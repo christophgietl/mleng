@@ -47,7 +47,7 @@ specific aspects of developing and operating a _machine learning_ service.
 
 ### You have built
 
-#### Operational stack of the King County Real Estate company
+#### Operational stack of the King County Real Estate Company
 
 - online marketplace for houses in the Seattle area (a.k.a. King County or KC)
 - PostgreSQL database containing recent house sales<br/>
@@ -56,13 +56,13 @@ specific aspects of developing and operating a _machine learning_ service.
     </strong>
 ---
 
-#### Demo: house sales data in the database of the KC real estate company
+#### Demo: house sales data in the database of the KC Real Estate Company
 
 [![The operational stack contains different versions of the house sales data.](images/operational-stack.png)](https://eu-central-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/demo-ml-ops-100-deployment-MarketPlacePipeline-TZB8CX0GEW7F/view)
 
 ---
 
-#### Analytical stack of the King County Real Estate company
+#### Analytical stack of the King County Real Estate Company
 
 <ul>
     <li>
