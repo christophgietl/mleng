@@ -116,12 +116,19 @@ Resources:
                 - pyenv virtualenv dbt
                 - pyenv global dbt
                 - pip install dbt-postgres~=0.19.1
-                - mkdir -p ~/.dbt
-                - cp demo/200-marketplace/.dbt/profiles.yml ~/.dbt/profiles.yml
               runtime-versions:
                 python: 3.9
+            pre_build:
+              commands:
+                - mkdir -p ~/.dbt
+                - cp demo/200-marketplace/.dbt/profiles.yml ~/.dbt/profiles.yml
             build:
               commands:
+                - echo ${CODEBUILD_SRC_DIR}
+                - ls -ahl ${CODEBUILD_SRC_DIR}
+                - ls -ahl ${CODEBUILD_SRC_DIR}/..
+                - ls -ahl ${CODEBUILD_SRC_DIR}/../01
+                - cat ${CODEBUILD_SRC_DIR}/../01/output.cloudformation.json
                 - cd demo/200-marketplace
                 - ls -ahl
                 - dbt debug
@@ -172,7 +179,7 @@ Resources:
                 - Name: repo
         - Name: DeployInfrastructure
           Actions:
-            - Name: Infrastructure
+            - Name: Database
               ActionTypeId:
                 Category: Deploy
                 Owner: AWS
@@ -180,11 +187,14 @@ Resources:
                 Version: "1"
               Configuration:
                 ActionMode: CREATE_UPDATE
+                OutputFileName: output.cloudformation.json
                 RoleArn: !GetAtt CloudFormationRole.Arn
                 StackName: !Sub ${ProjectName}-200-marketplace
                 TemplatePath: repo::demo/200-marketplace/cloudformation.yml
               InputArtifacts:
                 - Name: repo
+              OutputArtifacts:
+                - Name: cloudformation
         - Name: DeployData
           Actions:
             - Name: Data
@@ -194,9 +204,11 @@ Resources:
                 Provider: CodeBuild
                 Version: "1"
               Configuration:
+                PrimarySource: repo
                 ProjectName: !Ref MarketPlaceBuildProject
               InputArtifacts:
                 - Name: repo
+                - Name: cloudformation
 
   PipelineRole:
     Type: AWS::IAM::Role
