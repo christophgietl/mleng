@@ -26,7 +26,9 @@
 
 <cite style="font-size:0.8em">D. Sculley et al. (2015) on QA for ML systems</cite>
 
-Note: D. Sculley and his nine co-authors have been working for several years on ML systems at Google, Inc.
+Note: Explain this quote!
+D. Sculley and his nine co-authors have been working
+for several years on ML systems at Google, Inc.
 
 ---
 

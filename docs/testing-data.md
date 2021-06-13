@@ -10,3 +10,5 @@
 > to a well functioning system.&rdquo;
 
 <cite style="font-size:0.8em">D. Sculley et al. (2015)</cite>
+
+Note: Explain this quote!
