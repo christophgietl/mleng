@@ -12,6 +12,7 @@ models:
 
 seeds:
   +quote_columns: false
+  +schema: seeds
   marketplace:
     kc_house_data:
       +column_types:

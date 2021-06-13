@@ -1,6 +1,3 @@
 [submodule "reveal.js"]
 	path = docs/reveal.js
 	url = https://github.com/hakimel/reveal.js
-[submodule "coursera_machine_learning"]
-	path = demo/200-marketplace/external/coursera_machine_learning
-	url = https://github.com/dbendet/coursera_machine_learning
