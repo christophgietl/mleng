@@ -58,7 +58,7 @@ specific aspects of developing and operating a _machine learning_ service.
 
 #### Demo: house sales data in the database of the KC Real Estate Company
 
-[![The operational stack contains different versions of the house sales data.](images/operational-stack.png)](https://eu-central-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/demo-ml-ops-100-deployment-MarketPlacePipeline-TZB8CX0GEW7F/view)
+[![The operational stack contains different versions of the house sales data.](images/operational-stack.png)](https://github.com/christophgietl/mlops/tree/main/demo/200-marketplace)
 
 ---
 
