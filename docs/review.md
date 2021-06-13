@@ -15,12 +15,7 @@
 - build and deployment (CI/CD)
 - quality assurance (test pyramid, observability)
 
----
-
-#### DevOps culture
-
-- agile methods
-- development and operations
+Note: At the beginning of this semester we have learned a lot about Cloud technologies &amp; methodologies.
 
 ---
 
@@ -45,18 +40,23 @@
     </li>
 </ul>
 
+Note: For the last four weeks we have taken a deeper look into the
+specific aspects of developing and operating a _machine learning_ service.
+
 ---
 
-### We have built
+### You have built
 
 #### Operational stack of the King County Real Estate company
 
 - online marketplace for houses in the Seattle area (a.k.a. King County or KC)
-- PostgreSQL database containing recent house sales
-
+- PostgreSQL database containing recent house sales<br/>
+    <strong class="fragment" data-fragment-index="2" style="font-size:1.2em; line-height:2em; margin-left:4em">
+        <span class="fragment highlight-red" data-fragment-index="2">⬆&nbsp;Important for today!&nbsp;⬆</span>
+    </strong>
 ---
 
-#### Demo: operational stack
+#### Demo: house sales data in the database of the KC real estate company
 
 [![The operational stack contains different versions of the house sales data.](images/operational-stack.png)](https://eu-central-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/demo-ml-ops-100-deployment-MarketPlacePipeline-TZB8CX0GEW7F/view)
 
