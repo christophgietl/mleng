@@ -56,6 +56,12 @@
 
 ---
 
+#### Demo: operational stack
+
+[![The operational stack contains different versions of the house sales data.](images/operational-stack.png)](https://eu-central-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/demo-ml-ops-100-deployment-MarketPlacePipeline-TZB8CX0GEW7F/view)
+
+---
+
 #### Analytical stack of the King County Real Estate company
 
 <ul>
@@ -78,3 +84,9 @@
         </strong>
     <li>monitoring for this service</li>
 </ul>
+
+---
+
+#### Demo: analytical stack
+
+![The analytical stack fits and deploys the sales price prediction service.](images/analytical-stack.png)
