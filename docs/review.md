@@ -42,8 +42,16 @@
 
 #### Operational stack of the King County Real Estate company
 
-TODO
+- online marketplace for houses in the Seattle area (a.k.a. King County or KC)
+- PostgreSQL database containing recent house sales
+
+---
 
 #### Analytical stack of the King County Real Estate company
 
-TODO
+- <strong style="color:#dc322f">sales price prediction service</strong> for houses in KC
+  - based on
+    - data from the database of the marketplace
+    - scikit-learn
+    - other Python technologies
+- build and deployment pipeline for this service
