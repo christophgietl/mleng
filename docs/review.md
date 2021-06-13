@@ -40,7 +40,7 @@ Note: At the beginning of this semester we have learned a lot about Cloud techno
     </li>
 </ul>
 
-Note: For the last four weeks we have taken a deeper look into the
+Note: For the past four weeks we have taken a deeper look into the
 specific aspects of developing and operating a _machine learning_ service.
 
 ---
