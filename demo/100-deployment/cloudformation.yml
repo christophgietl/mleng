@@ -1,0 +1,237 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+
+Description: Deployment pipelines
+
+
+Parameters:
+
+  CodeStarSourceConnectionArn:
+    Type: String
+
+  CodeStarSourceConnectionBranchName:
+    Type: String
+
+  CodeStarSourceConnectionFullRepositoryId:
+    Type: String
+
+  ProjectName:
+    Type: String
+
+
+Resources:
+
+  ArtifactStore:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-${AWS::StackName}-artifact-store
+
+  ArtifactStorePolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ArtifactStore
+      PolicyDocument:
+        Statement:
+          Action:
+            - s3:GetObject
+            - s3:GetObjectVersion
+            - s3:PutObject
+            - s3:PutObjectAcl
+          Effect: Allow
+          Principal:
+            AWS:
+              - !GetAtt MarketPlaceBuildProjectServiceRole.Arn
+              - !GetAtt PipelineRole.Arn
+          Resource: !Sub ${ArtifactStore.Arn}/*
+
+  CloudFormationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: cloudformation.amazonaws.com
+      Policies:
+        - PolicyName: ManageResources
+          PolicyDocument:
+            Statement:
+              Action:
+                - ec2:DescribeAccountAttributes
+                - ec2:DescribeSecurityGroups
+                - rds:CreateDBInstance
+                - rds:DeleteDBInstance
+                - rds:DescribeDBInstances
+                - rds:ModifyDBInstance
+                - secretsmanager:CreateSecret
+                - secretsmanager:DeleteSecret
+                - secretsmanager:GetRandomPassword
+                - secretsmanager:GetSecretValue
+                - secretsmanager:PutSecretValue
+                - secretsmanager:TagResource
+                - secretsmanager:UntagResource
+                - secretsmanager:UpdateSecret
+              Effect: Allow
+              Resource: "*"
+        - PolicyName: CreateServiceLinkedRoleForRDS
+          # cf. https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#service-linked-role-permissions
+          PolicyDocument:
+            Statement:
+              - Action: iam:CreateServiceLinkedRole
+                Condition:
+                  StringLike:
+                    iam:AWSServiceName: rds.amazonaws.com
+                Effect: Allow
+                Resource: arn:aws:iam::*:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS*
+              - Action:
+                  - iam:AttachRolePolicy,
+                  - iam:PutRolePolicy
+                Effect: Allow
+                Resource: arn:aws:iam::*:role/aws-service-role/rds.amazonaws.com/AWSServiceRoleForRDS*
+
+  MarketPlaceBuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Artifacts:
+        Type: CODEPIPELINE
+      Cache:
+        Modes:
+          - LOCAL_CUSTOM_CACHE
+        Type: LOCAL
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/standard:5.0
+        Type: LINUX_CONTAINER
+      ServiceRole: !Ref MarketPlaceBuildProjectServiceRole
+      Source:
+        BuildSpec: |
+          version: 0.2
+          cache:
+            paths:
+              - /root/.cache/pip/**/*
+          phases:
+            install:
+              commands:
+                - pyenv virtualenv dbt
+                - pyenv global dbt
+                - pip install dbt-postgres~=0.19.1
+              runtime-versions:
+                python: 3.9
+            build:
+              commands:
+                - dbt --version
+        Type: CODEPIPELINE
+
+  MarketPlaceBuildProjectServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: codebuild.amazonaws.com
+      Policies:
+        - PolicyName: ManageLogs
+          PolicyDocument:
+            Statement:
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:GetLogEvents
+                - logs:PutLogEvents
+              Effect: Allow
+              Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*
+
+  MarketPlacePipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      ArtifactStore:
+        Type: S3
+        Location: !Ref ArtifactStore
+      RoleArn: !GetAtt PipelineRole.Arn
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: GitHub
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Provider: CodeStarSourceConnection
+                Version: "1"
+              Configuration:
+                BranchName: !Ref CodeStarSourceConnectionBranchName
+                ConnectionArn: !Ref CodeStarSourceConnectionArn
+                FullRepositoryId: !Ref CodeStarSourceConnectionFullRepositoryId
+              OutputArtifacts:
+                - Name: repo
+        - Name: DeployInfrastructure
+          Actions:
+            - Name: Infrastructure
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: "1"
+              Configuration:
+                ActionMode: CREATE_UPDATE
+                RoleArn: !GetAtt CloudFormationRole.Arn
+                StackName: !Sub ${ProjectName}-200-marketplace
+                TemplatePath: repo::200-marketplace/cloudformation.yml
+              InputArtifacts:
+                - Name: repo
+        - Name: DeployData
+          Actions:
+            - Name: Data
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref MarketPlaceBuildProject
+              InputArtifacts:
+                - Name: repo
+
+  PipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: codepipeline.amazonaws.com
+      Policies:
+        - PolicyName: ManageCloudFormationStacks
+          PolicyDocument:
+            Statement:
+              Action:
+                - cloudformation:CreateStack
+                - cloudformation:DescribeStacks
+                - cloudformation:UpdateStack
+              Effect: Allow
+              Resource: !Sub arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${ProjectName}-*/*
+        - PolicyName: ManageCodeBuildBuilds
+          PolicyDocument:
+            Statement:
+              Action:
+                - codebuild:BatchGetBuilds
+                - codebuild:RetryBuild
+                - codebuild:StartBuild
+                - codebuild:StopBuild
+              Effect: Allow
+              Resource: !GetAtt MarketPlaceBuildProject.Arn
+        - PolicyName: UseCodeStarConnection
+          PolicyDocument:
+            Statement:
+              Action: codestar-connections:UseConnection
+              Effect: Allow
+              Resource: !Ref CodeStarSourceConnectionArn
+        - PolicyName: PassCloudFormationRole
+          PolicyDocument:
+            Statement:
+              Action: iam:PassRole
+              Effect: Allow
+              Resource: !GetAtt CloudFormationRole.Arn
