@@ -116,6 +116,8 @@ Resources:
                 - pyenv virtualenv dbt
                 - pyenv global dbt
                 - pip install dbt-postgres~=0.19.1
+                - mkdir -p ~/.dbt
+                - cp demo/200-marketplace/.dbt/profiles.yml ~/.dbt/profiles.yml
               runtime-versions:
                 python: 3.9
             build:

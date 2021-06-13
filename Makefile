@@ -21,5 +21,7 @@ set_up_local_reveal_js_environment:	## Install reveal.js to allow local preview 
 	git submodule update --init
 	cd "${REVEAL_DIR}" && npm install
 
-set_up_local_python_environment:	## Install Python dependencies needed for development
+set_up_local_dbt_environment:	## Install and configure dbt for development of demo/200-marketplace/
 	pip3 install --requirement demo/200-marketplace/requirements.txt
+	mkdir -p ~/.dbt
+	cp demo/200-marketplace/.dbt/profiles.yml ~/.dbt/profiles.yml
