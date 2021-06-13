@@ -1,23 +1,25 @@
-## Our CI/CD pipeline &amp; its artefacts
+## Developing a build pipeline for our sales price prediction model
 
 ---
 
-### Triggers for the CI/CD pipeline
+### Artefacts of the build pipeline
 
-- **new commits for our GitHub repository** to keep the service up-to-date with our codebase
+- input artefacts
+  - **data preprocessing and model training code**<br/>from our GitHub repo
+  - **training data** from the marketplace database
+- output artefact
+  - **trained model** in a serialized format<br/>(e.g. a pickle file)
+
+---
+
+### Triggers for the build pipeline
+
+- **new commits from our GitHub repository** to keep the service up-to-date with our codebase
 - **nightly Amazon CloudWatch events** to keep the service up-to-date with the marketplace data
 
 ---
 
-### Artefacts of the CI/CD pipeline
-
-- code
-- training data
-- trained model
-
----
-
-### Quality assurance (QA) in the CI/CD pipeline
+### Quality assurance (QA) in the build pipeline
 
 > &ldquo;[T]hey have all of the maintenance **problems of traditional code plus**
 > an additional set of **ML-specific issues**.&rdquo;
@@ -28,7 +30,7 @@ Note: D. Sculley and his nine co-authors have been working for several years on 
 
 ---
 
-### QA for the artefacts of the CI/CD pipeline
+### QA for the artefacts of the build pipeline
 
 - code
   <strong class="fragment" data-fragment-index="1">
