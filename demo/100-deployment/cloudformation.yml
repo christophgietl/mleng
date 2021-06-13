@@ -133,6 +133,7 @@ Resources:
                 - cp demo/200-marketplace/.dbt/profiles.yml ~/.dbt/profiles.yml
             build:
               commands:
+                - echo $MP_LOAD_DATA_BEFORE_DT
                 - cd demo/200-marketplace
                 - dbt debug
                 - dbt seed
@@ -205,22 +206,43 @@ Resources:
                 TemplatePath: repo::demo/200-marketplace/cloudformation.yml
               InputArtifacts:
                 - Name: repo
-              OutputArtifacts:
-                - Name: cloudformation
         - Name: DeployData
           Actions:
-            - Name: Data
+            - Name: HouseSalesEmpty
               ActionTypeId:
                 Category: Build
                 Owner: AWS
                 Provider: CodeBuild
                 Version: "1"
               Configuration:
-                PrimarySource: repo
                 ProjectName: !Ref MarketPlaceBuildProject
               InputArtifacts:
                 - Name: repo
-                - Name: cloudformation
+              RunOrder: 1
+            - Name: HouseSales2014
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                EnvironmentVariables: '[{"name":"MP_LOAD_DATA_BEFORE_DT","value":"2015-01-01","type":"PLAINTEXT"}]'
+                ProjectName: !Ref MarketPlaceBuildProject
+              InputArtifacts:
+                - Name: repo
+              RunOrder: 2
+            - Name: HouseSales2015
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                EnvironmentVariables: '[{"name":"MP_LOAD_DATA_BEFORE_DT","value":"2016-01-01","type":"PLAINTEXT"}]'
+                ProjectName: !Ref MarketPlaceBuildProject
+              InputArtifacts:
+                - Name: repo
+              RunOrder: 3
 
   PipelineRole:
     Type: AWS::IAM::Role
