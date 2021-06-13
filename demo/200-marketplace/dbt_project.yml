@@ -9,3 +9,11 @@ models:
       # Applies to all files under models/example/
       example:
           materialized: view
+
+seeds:
+  +quote_columns: false
+  marketplace:
+    kc_house_data:
+      +column_types:
+        id: varchar(16)
+        date: timestamp

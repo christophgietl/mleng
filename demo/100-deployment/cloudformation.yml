@@ -133,10 +133,9 @@ Resources:
                 - cp demo/200-marketplace/.dbt/profiles.yml ~/.dbt/profiles.yml
             build:
               commands:
-                - echo $MP_DB_HOST $MP_DB_PORT $MP_DB_USER $MP_DB_PASSWORD
                 - cd demo/200-marketplace
-                - ls -ahl
                 - dbt debug
+                - dbt seed
         Type: CODEPIPELINE
 
   MarketPlaceBuildProjectServiceRole:
