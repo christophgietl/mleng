@@ -8,7 +8,7 @@
   - **data preprocessing and model training code**<br/>from our GitHub repo
   - **training data** from the marketplace database
 - output artefact
-  - **trained model** in a serialized format<br/>(e.g. a pickle file)
+  - **trained model** in a serialized format<br/>(e.g. a pickle or ONNX file)
 
 ---
 
