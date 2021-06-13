@@ -49,9 +49,12 @@
 
 #### Analytical stack of the King County Real Estate company
 
-- <strong style="color:#dc322f">sales price prediction service</strong> for houses in KC
-  - based on
-    - data from the database of the marketplace
-    - scikit-learn
-    - other Python technologies
-- build and deployment pipeline for this service
+- <strong style="color:#268bd2">sales price prediction service</strong> for houses in KC
+    - based on
+        - data from the database of the marketplace
+        - Python technologies (incl. scikit-learn)
+- build and deployment pipeline for this service<br/>
+  <strong style="color:#dc322f; font-size:1.2em; line-height:2em; margin-left:4em">
+  ↑&nbsp;You are here!&nbsp;↑
+  </strong>
+- monitoring for this service
