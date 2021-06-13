@@ -136,6 +136,7 @@ Resources:
                 - cd demo/200-marketplace
                 - dbt debug
                 - dbt seed
+                - dbt run
         Type: CODEPIPELINE
 
   MarketPlaceBuildProjectServiceRole:
