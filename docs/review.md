@@ -84,9 +84,3 @@
         </strong>
     <li>monitoring for this service</li>
 </ul>
-
----
-
-#### Demo: analytical stack
-
-![The analytical stack fits and deploys the sales price prediction service.](images/analytical-stack.png)
