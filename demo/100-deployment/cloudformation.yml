@@ -58,7 +58,10 @@ Resources:
           PolicyDocument:
             Statement:
               Action:
+                - ec2:AuthorizeSecurityGroupIngress
                 - ec2:DescribeAccountAttributes
+                - ec2:CreateSecurityGroup
+                - ec2:DeleteSecurityGroup
                 - ec2:DescribeSecurityGroups
                 - rds:CreateDBInstance
                 - rds:DeleteDBInstance

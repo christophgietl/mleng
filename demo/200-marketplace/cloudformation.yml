@@ -14,6 +14,8 @@ Resources:
       Engine: postgres
       MasterUsername: !Sub "{{resolve:secretsmanager:${DatabaseSecret}:SecretString:username}}"
       MasterUserPassword: !Sub "{{resolve:secretsmanager:${DatabaseSecret}:SecretString:password}}"
+      VPCSecurityGroups:
+        - !GetAtt DatabaseSecurityGroup.GroupId
 
   DatabaseSecret:
     Type: AWS::SecretsManager::Secret
@@ -31,3 +33,13 @@ Resources:
       SecretId: !Ref DatabaseSecret
       TargetId: !Ref DatabaseInstance
       TargetType: AWS::RDS::DBInstance
+
+  DatabaseSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: marketplace-db
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: 5432
+          IpProtocol: tcp
+          ToPort: 5432
