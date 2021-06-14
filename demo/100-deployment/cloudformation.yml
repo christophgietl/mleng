@@ -62,6 +62,18 @@ Resources:
                 FullRepositoryId: !Ref CodeStarSourceConnectionFullRepositoryId
               OutputArtifacts:
                 - Name: repo
+        - Name: Test
+          Actions:
+            - Name: Code
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref AnalyticsBuildProject
+              InputArtifacts:
+                - Name: repo
         - Name: Build
           Actions:
             - Name: SalesPricePredictionModel
