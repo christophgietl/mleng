@@ -30,5 +30,4 @@ Note: Explain this quote!
 
 ### Demo: adding data tests to our build pipeline
 
-[![The build pipeline already contains code tests.](images/adding-data-tests.png)](https://github.com/christophgietl/mlops/tree/main/demo/300-analytics)
-
+[![Pull Request for adding data test to our build pipeline](images/adding-data-tests.png)](https://github.com/christophgietl/mlops/pull/2)
