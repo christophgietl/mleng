@@ -67,6 +67,9 @@ Resources:
                 - pip install great-expectations~=0.13.19
               runtime-versions:
                 python: 3.9
+            pre_build:
+              commands:
+                - envsubst < demo/300-analytics/template_great_expectations/config_variables.yml > demo/300-analytics/great_expectations/uncommitted/config_variables.yml
             build:
               commands:
                 - cd demo/300-analytics/great_expectations
