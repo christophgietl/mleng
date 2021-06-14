@@ -69,6 +69,7 @@ Resources:
                 python: 3.9
             build:
               commands:
+                - cd demo/300-analytics/great_expectations
                 - great_expectations checkpoint run 20141231
         Type: CODEPIPELINE
 
