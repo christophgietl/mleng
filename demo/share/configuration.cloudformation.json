@@ -1,7 +1,7 @@
 {
   "Parameters": {
     "CodeStarSourceConnectionArn": "arn:aws:codestar-connections:eu-central-1:004068267802:connection/8a1ebf08-92e0-4975-a1a1-16334c8a372f",
-    "CodeStarSourceConnectionBranchName": "main",
+    "CodeStarSourceConnectionBranchName": "feature/data-tests",
     "CodeStarSourceConnectionFullRepositoryId": "christophgietl/mlops",
     "ProjectName": "demo-ml-ops"
   }
