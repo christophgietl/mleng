@@ -1,0 +1,387 @@
+{
+  "data_asset_type": "Dataset",
+  "expectation_suite_name": "spps",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": {
+        "max_value": 1100,
+        "min_value": 900
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_table_column_count_to_equal",
+      "kwargs": {
+        "value": 21
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_table_columns_to_match_ordered_list",
+      "kwargs": {
+        "column_list": [
+          "id",
+          "date",
+          "price",
+          "bedrooms",
+          "bathrooms",
+          "sqft_living",
+          "sqft_lot",
+          "floors",
+          "waterfront",
+          "view",
+          "condition",
+          "grade",
+          "sqft_above",
+          "sqft_basement",
+          "yr_built",
+          "yr_renovated",
+          "zipcode",
+          "lat",
+          "long",
+          "sqft_living15",
+          "sqft_lot15"
+        ]
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "bedrooms"
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "bedrooms",
+        "value_set": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_kl_divergence_to_be_less_than",
+      "kwargs": {
+        "column": "bedrooms",
+        "partition_object": {
+          "values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "weights": [
+            0.001,
+            0.01,
+            0.119,
+            0.461,
+            0.325,
+            0.07,
+            0.012,
+            0.002
+          ]
+        },
+        "threshold": 0.6
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "price"
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_min_to_be_between",
+      "kwargs": {
+        "column": "price",
+        "max_value": 80001,
+        "min_value": 79999
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_max_to_be_between",
+      "kwargs": {
+        "column": "price",
+        "max_value": 5110801,
+        "min_value": 5110799
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_mean_to_be_between",
+      "kwargs": {
+        "column": "price",
+        "max_value": 527328.616,
+        "min_value": 527326.616
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_median_to_be_between",
+      "kwargs": {
+        "column": "price",
+        "max_value": 449476.0,
+        "min_value": 449474.0
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_quantile_values_to_be_between",
+      "kwargs": {
+        "allow_relative_error": true,
+        "column": "price",
+        "quantile_ranges": {
+          "quantiles": [
+            0.05,
+            0.25,
+            0.5,
+            0.75,
+            0.95
+          ],
+          "value_ranges": [
+            [
+              212999,
+              213001
+            ],
+            [
+              309999,
+              310001
+            ],
+            [
+              448999,
+              449001
+            ],
+            [
+              639999,
+              640001
+            ],
+            [
+              1074999,
+              1075001
+            ]
+          ]
+        }
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "id"
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "id",
+        "min_value": 1
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "date"
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "date",
+        "max_value": "2015-12-31 00:00:00",
+        "min_value": "2013-05-02 00:00:00",
+        "parse_strings_as_datetimes": true
+      },
+      "meta": {
+        "BasicSuiteBuilderProfiler": {
+          "confidence": "very low"
+        }
+      }
+    }
+  ],
+  "meta": {
+    "BasicSuiteBuilderProfiler": {
+      "batch_kwargs": {
+        "data_asset_name": "marketplace.kc_house_sales",
+        "datasource": "marketplace",
+        "limit": 1000,
+        "schema": "marketplace",
+        "table": "kc_house_sales"
+      },
+      "created_at": 1623633822.422394,
+      "created_by": "BasicSuiteBuilderProfiler"
+    },
+    "citations": [
+      {
+        "batch_definition": null,
+        "batch_kwargs": {
+          "data_asset_name": "marketplace.kc_house_sales",
+          "datasource": "marketplace",
+          "limit": 1000,
+          "schema": "marketplace",
+          "table": "kc_house_sales"
+        },
+        "batch_markers": {
+          "ge_load_time": "20210614T012339.931006Z"
+        },
+        "batch_parameters": null,
+        "batch_request": null,
+        "batch_spec": null,
+        "citation_date": "2021-06-14T01:23:43.279640Z",
+        "comment": "BasicSuiteBuilderProfiler added a citation based on the current batch."
+      }
+    ],
+    "columns": {
+      "bathrooms": {
+        "description": ""
+      },
+      "bedrooms": {
+        "description": ""
+      },
+      "condition": {
+        "description": ""
+      },
+      "date": {
+        "description": ""
+      },
+      "floors": {
+        "description": ""
+      },
+      "grade": {
+        "description": ""
+      },
+      "id": {
+        "description": ""
+      },
+      "lat": {
+        "description": ""
+      },
+      "long": {
+        "description": ""
+      },
+      "price": {
+        "description": ""
+      },
+      "sqft_above": {
+        "description": ""
+      },
+      "sqft_basement": {
+        "description": ""
+      },
+      "sqft_living": {
+        "description": ""
+      },
+      "sqft_living15": {
+        "description": ""
+      },
+      "sqft_lot": {
+        "description": ""
+      },
+      "sqft_lot15": {
+        "description": ""
+      },
+      "view": {
+        "description": ""
+      },
+      "waterfront": {
+        "description": ""
+      },
+      "yr_built": {
+        "description": ""
+      },
+      "yr_renovated": {
+        "description": ""
+      },
+      "zipcode": {
+        "description": ""
+      }
+    },
+    "great_expectations_version": "0.13.19",
+    "notes": {
+      "content": [
+        "#### This is an _example_ suite\n\n- This suite was made by quickly glancing at 1000 rows of your data.\n- This is **not a production suite**. It is meant to show examples of expectations.\n- Because this suite was auto-generated using a very basic profiler that does not know your data like you do, many of the expectations may not be meaningful.\n"
+      ],
+      "format": "markdown"
+    }
+  }
+}

@@ -69,7 +69,7 @@ Resources:
                 python: 3.9
             build:
               commands:
-                - echo "Success!"
+                - great_expectations checkpoint run 20141231
         Type: CODEPIPELINE
 
   AnalyticsPipeline:
