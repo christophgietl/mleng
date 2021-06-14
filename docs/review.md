@@ -89,4 +89,4 @@ specific aspects of developing and operating a _machine learning_ service.
 
 #### Demo: build pipeline for the sales price prediction service
 
-[![The build pipeline does not contain any stacks yet.](images/analytical-stack.png)](https://github.com/christophgietl/mlops/tree/main/demo/300-analytics)
+[![The build pipeline already contains code tests.](images/analytical-build-pipeline.png)](https://eu-central-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/demo-ml-ops-100-deployment-AnalyticsPipeline-4724DHPK40U4/view?region=eu-central-1)
