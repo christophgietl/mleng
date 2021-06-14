@@ -25,3 +25,10 @@ Note: Explain this quote!
   - ZIP code system gets reformed.
   - KC Real Estate Company decides allows doghouses on their marketplace.
   - House prices in KC suddenly drop due to global events.
+
+---
+
+### Demo: adding data tests to our build pipeline
+
+[![The build pipeline already contains code tests.](images/adding-data-tests.png)](https://github.com/christophgietl/mlops/tree/main/demo/300-analytics)
+
