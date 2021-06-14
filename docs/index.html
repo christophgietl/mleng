@@ -27,115 +27,117 @@
     <div class="slides">
 
         <section>
-            <h2>Course description</h2>
-            <table style="font-size: 0.5em">
-                <tr>
-                    <th style="border-style: none">Name</th>
-                    <td style="border-style: none">Machine Learning Operations</td>
-                </tr>
-                <tr>
-                    <th style="border-style: none">Intended audience</th>
-                    <td style="border-style: none">
-                        Students of a fictional M.&thinsp;Sc. programme in Data Science<br/>
-                        interested in a career in Data Engineering
-                    </td>
-                </tr>
-                <tr>
-                    <th style="border-style: none">Prerequisites</th>
-                    <td style="border-style: none">extended knowledge of Python and scikit-learn</td>
-                </tr>
-                <tr>
-                    <th style="border-style: none"></th>
-                    <td style="border-style: none">basic knowledge of Linux and TCP/IP networks</td>
-                </tr>
-                <tr>
-                    <th style="border-style: none"></th>
-                    <td style="border-style: none">
-                        familiarity with software engineering best practices
-                        (e.g. TDD, agile, microservices)
-                    </td>
-                </tr>
-                <tr>
-                    <th style="border-style: none">Educational goals</th>
-                    <td style="border-style: none">
-                        Students gain familiarity and proficiency in <strong>development and operations<br/>
-                        of machine learning applications</strong>.
-                    </td>
-                </tr>
-                <tr>
-                    <th style="border-style: none"></th>
-                    <td style="border-style: none">
-                        Students can work as <strong>full-stack data engineers</strong><br/>
-                        in close collaboration with software developers and operators.
-                    </td>
-                </tr>
-                <tr>
-                    <th style="border-style: none">Theory</th>
-                    <td style="border-style: none">DevOps methodology</td>
-                </tr>
-                <tr>
-                    <th style="border-style: none"></th>
-                    <td style="border-style: none">cloud technologies</td>
-                </tr>
-                <tr>
-                    <th style="border-style: none"></th>
-                    <td style="border-style: none">machine learning operations</td>
-                </tr>
-                <tr>
-                    <th style="border-style: none">Practice</th>
-                    <td style="border-style: none">
-                        Students develop a cloud stack for the fictional King County Real Estate Company<br/>
-                        including a sales price prediction service.
-                    </td>
-                </tr>
-            </table>
-            <aside class="notes">
-                <h3>Motivation for this curriculum</h3>
-                <ul>
-                    <li>worked as a data engineer for the past 3.5 years</li>
-                    <li>architected, developed and operated platforms for data analysts and data scientists</li>
-                    <li>had to learn a lot that I had not learned at my university</li>
-                    <li>tried to outline a course containg all these things</li>
-                </ul>
-                <h3>Motivation for today's lecture</h3>
-                <ul>
-                    <li>Software testing is the essential best practice in software engineering in my opinion.</li>
-                    <li>Reproducibility is an important best practice in data science.</li>
-                    <li>Build pipelines are the place where testing and reproducibility meet.</li>
-                </ul>
-                <h3>Questions on this meta slide?</h3>
-                The lecture will begin in ten seconds.
-            </aside>
-        </section>
+            <section>
+                <h1 style="text-align: left">Quality Assurance in ML Build Pipelines</h1>
+                <table style="font-size: 0.5em; margin-left: 0; margin-top: 2em; text-align: left">
+                    <tr>
+                        <th style="border-style: none">Course</th>
+                        <td style="border-style: none">Machine Learning Operations</td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none">Lecturer</th>
+                        <td style="border-style: none">Christoph Gietl</td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none">Date</th>
+                        <td style="border-style: none">14 June 2021</td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none">Slides</th>
+                        <td style="border-style: none">
+                            <a href="https://christophgietl.github.io/mlops">christophgietl.github.io/mlops</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none">Code</th>
+                        <td style="border-style: none">
+                            <a href="https://github.com/christophgietl/mlops">github.com/christophgietl/mlops</a>
+                        </td>
+                    </tr>
+                </table>
+            </section>
 
-        <section>
-            <h1 style="text-align: left">Quality Assurance in ML Build Pipelines</h1>
-            <table style="font-size: 0.5em; margin-left: 0; margin-top: 2em; text-align: left">
-                <tr>
-                    <th style="border-style: none">Course</th>
-                    <td style="border-style: none">Machine Learning Operations</td>
-                </tr>
-                <tr>
-                    <th style="border-style: none">Lecturer</th>
-                    <td style="border-style: none">Christoph Gietl</td>
-                </tr>
-                <tr>
-                    <th style="border-style: none">Date</th>
-                    <td style="border-style: none">14 June 2021</td>
-                </tr>
-                <tr>
-                    <th style="border-style: none">Slides</th>
-                    <td style="border-style: none">
-                        <a href="https://christophgietl.github.io/mlops">christophgietl.github.io/mlops</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th style="border-style: none">Code</th>
-                    <td style="border-style: none">
-                        <a href="https://github.com/christophgietl/mlops">github.com/christophgietl/mlops</a>
-                    </td>
-                </tr>
-            </table>
+            <section>
+                <h2>Course description</h2>
+                <table style="font-size: 0.5em">
+                    <tr>
+                        <th style="border-style: none">Name</th>
+                        <td style="border-style: none">Machine Learning Operations</td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none">Intended audience</th>
+                        <td style="border-style: none">
+                            Students of a fictional M.&thinsp;Sc. programme in Data Science<br/>
+                            interested in a career in Data Engineering
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none">Prerequisites</th>
+                        <td style="border-style: none">extended knowledge of Python and scikit-learn</td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none"></th>
+                        <td style="border-style: none">basic knowledge of Linux and TCP/IP networks</td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none"></th>
+                        <td style="border-style: none">
+                            familiarity with software engineering best practices
+                            (e.g. TDD, agile, microservices)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none">Educational goals</th>
+                        <td style="border-style: none">
+                            Students gain familiarity and proficiency in <strong>development and operations<br/>
+                            of machine learning applications</strong>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none"></th>
+                        <td style="border-style: none">
+                            Students can work as <strong>full-stack data engineers</strong><br/>
+                            in close collaboration with software developers and operators.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none">Theory</th>
+                        <td style="border-style: none">DevOps methodology</td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none"></th>
+                        <td style="border-style: none">cloud technologies</td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none"></th>
+                        <td style="border-style: none">machine learning operations</td>
+                    </tr>
+                    <tr>
+                        <th style="border-style: none">Practice</th>
+                        <td style="border-style: none">
+                            Students develop a cloud stack for the fictional King County Real Estate Company<br/>
+                            including a sales price prediction service.
+                        </td>
+                    </tr>
+                </table>
+                <aside class="notes">
+                    <h3>Motivation for this curriculum</h3>
+                    <ul>
+                        <li>worked as a data engineer for the past 3.5 years</li>
+                        <li>architected, developed and operated platforms for data analysts and data scientists</li>
+                        <li>had to learn a lot that I had not learned at my university</li>
+                        <li>tried to outline a course containg all these things</li>
+                    </ul>
+                    <h3>Motivation for today's lecture</h3>
+                    <ul>
+                        <li>Software testing is the essential best practice in software engineering in my opinion.</li>
+                        <li>Reproducibility is an important best practice in data science.</li>
+                        <li>Build pipelines are the place where testing and reproducibility meet.</li>
+                    </ul>
+                    <h3>Questions on this meta slide?</h3>
+                    The lecture will begin in ten seconds.
+                </aside>
+            </section>
         </section>
 
         <section data-markdown="review.md"
@@ -185,8 +187,6 @@
         slideNumber: true,
         plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
     });
-
-
 </script>
 
 </body>
