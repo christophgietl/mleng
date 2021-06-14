@@ -21,6 +21,60 @@ Parameters:
 
 Resources:
 
+  AnalyticsBuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/standard:5.0
+        Type: LINUX_CONTAINER
+      ServiceRole: !Ref MarketPlaceBuildProjectServiceRole
+      Source:
+        BuildSpec: |
+          version: 0.2
+          phases:
+            build:
+              commands:
+                - echo "Success!"
+        Type: CODEPIPELINE
+
+  AnalyticsPipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      ArtifactStore:
+        Type: S3
+        Location: !Ref ArtifactStore
+      RoleArn: !GetAtt PipelineRole.Arn
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: GitHub
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Provider: CodeStarSourceConnection
+                Version: "1"
+              Configuration:
+                BranchName: !Ref CodeStarSourceConnectionBranchName
+                ConnectionArn: !Ref CodeStarSourceConnectionArn
+                FullRepositoryId: !Ref CodeStarSourceConnectionFullRepositoryId
+              OutputArtifacts:
+                - Name: repo
+        - Name: Build
+          Actions:
+            - Name: SalesPricePredictionModel
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref AnalyticsBuildProject
+              InputArtifacts:
+                - Name: repo
+
   ArtifactStore:
     Type: AWS::S3::Bucket
     Properties:
@@ -275,7 +329,7 @@ Resources:
                 - codebuild:StartBuild
                 - codebuild:StopBuild
               Effect: Allow
-              Resource: !GetAtt MarketPlaceBuildProject.Arn
+              Resource: "*"
         - PolicyName: UseCodeStarConnection
           PolicyDocument:
             Statement:
