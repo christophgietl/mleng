@@ -5,7 +5,10 @@
 ### Summary and outlook
 
 - In ML Operations we have to test three artefacts: code, training data and trained model.
-- Next week: more details on each test step.
+- Testing data protects us
+  - from schema changes of our data source and
+  - from changes in the real world.
+- Next week: Testing trained models.
 
 <h3 style="margin-top: 1em">Further reading</h3>
 
