@@ -25,3 +25,6 @@ set_up_local_dbt_environment:	## Install and configure dbt for development of de
 	pip3 install --requirement demo/200-marketplace/requirements.txt
 	mkdir -p ~/.dbt
 	cp demo/200-marketplace/.dbt/profiles.yml ~/.dbt/profiles.yml
+
+set_up_local_great_expectations_environment:	## Install and configure Great Expectations for development of demo/300-analytics/
+	pip3 install --requirement demo/300-analytics/requirements.txt
