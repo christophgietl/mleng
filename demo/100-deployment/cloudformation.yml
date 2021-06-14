@@ -64,7 +64,7 @@ Resources:
               commands:
                 - pyenv virtualenv greatexp
                 - pyenv global greatexp
-                - pip install great-expectations~=0.13.19
+                - pip install --requirement demo/300-analytics/requirements.txt
               runtime-versions:
                 python: 3.9
             pre_build:
