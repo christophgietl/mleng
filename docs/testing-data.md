@@ -23,11 +23,11 @@ Note: Explain this quote!
   - Integer encoding for `condition` changes.
 - changes in the real world
   - ZIP code system gets reformed.
-  - KC Real Estate Company decides allows doghouses on their marketplace.
+  - KC Real Estate Company decides to allow doghouses on their marketplace.
   - House prices in KC suddenly drop due to global events.
 
 ---
 
 ### Demo: adding data tests to our build pipeline
 
-[![Pull Request for adding data test to our build pipeline](images/adding-data-tests.png)](https://github.com/christophgietl/mlops/pull/2)
+[![Pull Request for adding data test to our build pipeline](images/adding-data-tests.png)](https://github.com/christophgietl/mlops/pull/2/files?diff=unified&w=1)
