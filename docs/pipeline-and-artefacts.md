@@ -5,17 +5,10 @@
 ### Artefacts of the build pipeline
 
 - input artefacts
-  - **data preprocessing and model training code**<br/>from our GitHub repo
-  - **training data** from the marketplace database
+    - **data preprocessing and model training code**<br/>from our GitHub repo
+    - **training data** from the marketplace database
 - output artefact
-  - **trained model** in a serialized format<br/>(e.g. a pickle or ONNX file)
-
----
-
-### Triggers for the build pipeline
-
-- **new commits from our GitHub repository** to keep the service up-to-date with our codebase
-- **nightly Amazon CloudWatch events** to keep the service up-to-date with the marketplace data
+    - **trained model** in a serialized format<br/>(e.g. a pickle or ONNX file)
 
 ---
 
@@ -27,8 +20,7 @@
 <cite style="font-size:0.8em">D. Sculley et al. (2015) on QA for ML systems</cite>
 
 Note: Explain this quote!
-D. Sculley and his nine co-authors have been working
-for several years on ML systems at Google, Inc.
+D. Sculley and his nine co-authors have been working for several years on ML systems at Google, Inc.
 
 ---
 
