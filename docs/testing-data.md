@@ -23,7 +23,7 @@ Note: Explain this quote!
   - Integer encoding for `condition` changes.
 - changes in the real world
   - ZIP code system gets reformed.
-  - KC Real Estate Company decides allows doghouses on their marketplace.
+  - KC Real Estate Company decides to allow doghouses on their marketplace.
   - House prices in KC suddenly drop due to global events.
 
 ---
