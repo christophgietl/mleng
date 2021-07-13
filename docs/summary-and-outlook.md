@@ -8,7 +8,7 @@
 - Testing data protects us
   - from schema changes of our data source and
   - from changes in the real world.
-- Next week: Testing trained models.
+- Next talk: Testing trained models.
 
 <h3 style="margin-top: 1em">Further reading</h3>
 
