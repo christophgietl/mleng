@@ -1,4 +1,4 @@
-## Previously on Machine Learning Operations &hellip;
+## Previously on Machine Learning Engineering &hellip;
 
 ---
 
@@ -19,7 +19,7 @@ Note: At the beginning of this semester we have learned a lot about Cloud techno
 
 ---
 
-#### Machine learning operations
+#### Machine learning engineering
 
 <ul>
     <li>REST APIs for ML models</li>
