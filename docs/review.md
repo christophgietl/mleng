@@ -35,7 +35,6 @@ Note: At the beginning of this semester we have learned a lot about Cloud techno
                 </span>
               </strong>
             </li>
-            <li>monitoring</li>
         </ul>
     </li>
 </ul>
@@ -54,6 +53,7 @@ specific aspects of developing and operating a _machine learning_ service.
     <strong class="fragment" data-fragment-index="2" style="font-size:1.2em; line-height:2em; margin-left:4em">
         <span class="fragment highlight-red" data-fragment-index="2">⬆&nbsp;Important for today!&nbsp;⬆</span>
     </strong>
+
 ---
 
 #### Demo: house sales data in the database of the KC Real Estate Company
@@ -82,7 +82,6 @@ specific aspects of developing and operating a _machine learning_ service.
         <strong class="fragment" data-fragment-index="2" style="font-size:1.2em; line-height:2em; margin-left:4em">
             <span class="fragment highlight-red" data-fragment-index="2">⬆&nbsp;You are here!&nbsp;⬆</span>
         </strong>
-    <li>monitoring for this service</li>
 </ul>
 
 ---
