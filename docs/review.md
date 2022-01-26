@@ -2,48 +2,6 @@
 
 ---
 
-### We have learned
-
-#### Cloud technologies &amp; methodologies
-
-- infrastructure
-    - management (immutable infrastructure, IaC)
-    - resources
-        - compute (VMs, containers, FaaS)
-        - storage (files, databases)
-        - network
-- build and deployment (CI/CD)
-- quality assurance (test pyramid, observability)
-
-Note: At the beginning of this semester we have learned a lot about Cloud technologies &amp; methodologies.
-
----
-
-#### Machine learning engineering
-
-<ul>
-    <li>REST APIs for ML models</li>
-    <li>build and deployment in ML</li>
-    <li>quality assurance in ML
-        <ul>
-            <li>testing
-              <strong class="fragment"
-                      data-fragment-index="1"
-                      style="font-size:1.2em; line-height:2em; margin:0.3em; position:relative; top:0.11em">
-                <span class="fragment highlight-red" data-fragment-index="1">
-                    &thinsp;⬅&nbsp;&nbsp;You are here!
-                </span>
-              </strong>
-            </li>
-        </ul>
-    </li>
-</ul>
-
-Note: For the past four weeks we have taken a deeper look into the
-specific aspects of developing and operating a _machine learning_ service.
-
----
-
 ### You have built
 
 #### Operational stack of the King County Real Estate Company
