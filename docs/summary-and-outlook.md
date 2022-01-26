@@ -4,11 +4,11 @@
 
 ### Summary and outlook
 
-- In ML Engineering we have to test three artefacts: code, training data and trained model.
-- Testing data protects us
-  - from schema changes of our data source and
-  - from changes in the real world.
-- Next talk: Testing trained models.
+- We have to test three artefacts in ML engineering: code, training data and trained model.
+- Validating data protects us from
+    - schema changes of our data source and
+    - changes in the real world.
+- Next talk: Validating trained models.
 
 <h3 style="margin-top: 1em">Further reading</h3>
 

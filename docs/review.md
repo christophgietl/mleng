@@ -1,4 +1,4 @@
-## What you have built so far &hellip;
+## What have you built so far?
 
 ---
 
@@ -32,7 +32,7 @@ Note:
 
 <ul>
     <li>
-        <span style="color: #1b91ff">sales price prediction service</span>
+        <em style="color: #1b91ff; font-style: normal">sales price prediction service</em>
         for houses in KC
         <ul>
             <li>based on
