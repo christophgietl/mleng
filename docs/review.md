@@ -1,10 +1,8 @@
-## Previously on Machine Learning Engineering &hellip;
+## What you have built so far &hellip;
 
 ---
 
-### You have built
-
-#### Operational stack of the King County Real Estate Company
+### Operational stack of the KC Real Estate Company
 
 - online marketplace for houses in the Seattle area (a.k.a. King County or KC)
 - PostgreSQL database containing recent house sales<br/>
@@ -20,7 +18,7 @@
 
 ---
 
-#### Analytical stack of the King County Real Estate Company
+### Analytical stack of the KC Real Estate Company
 
 <ul>
     <li>
