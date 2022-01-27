@@ -30,4 +30,4 @@ Note: Explain this quote!
 
 ### Demo: adding data validation to our build pipeline
 
-[![Pull Request for adding data test to our build pipeline](images/adding-data-tests.png)](https://github.com/christophgietl/mlops/pull/2/files?diff=unified&w=1)
+[![Pull Request for adding data test to our build pipeline](images/adding-data-tests.png)](https://github.com/christophgietl/mleng/pull/2/files?diff=unified&w=1)
