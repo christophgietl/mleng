@@ -1,6 +1,6 @@
-# mlops
+# mleng
 
-This repository contains a presentation about Machine Learning Operations.
+This repository contains a presentation about Machine Learning Engineering.
 
 Please use `make help` to find out what you can do with this repository.
 
