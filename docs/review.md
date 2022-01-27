@@ -54,7 +54,7 @@ Note:
 
 #### Demo: build pipeline for the sales price prediction service
 
-[![The build pipeline already contains code tests.](images/analytical-build-pipeline.png)](https://eu-central-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/demo-ml-ops-100-deployment-AnalyticsPipeline-ECSMATJSZVAM/view?region=eu-central-1)
+[![The build pipeline already contains code tests.](images/analytical-build-pipeline.png)](https://eu-central-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/demo-ml-ops-100-deployment-AnalyticsPipeline-1EJ4OWOAPDZUH/view?region=eu-central-1)
 
 Note:
 
