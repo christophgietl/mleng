@@ -40,6 +40,43 @@ Resources:
                 - echo "Success!"
         Type: CODEPIPELINE
 
+  AnalyticsDataTestProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/standard:5.0
+        Type: LINUX_CONTAINER
+      ServiceRole: !Ref MarketPlaceBuildProjectServiceRole
+      Source:
+        BuildSpec: |
+          version: 0.2
+          env:
+            secrets-manager:
+              MP_DB_HOST: "marketplace-db:host"
+              MP_DB_PORT: "marketplace-db:port"
+              MP_DB_USER: "marketplace-db:username"
+              MP_DB_PASSWORD: "marketplace-db:password"
+          phases:
+            install:
+              commands:
+                - pyenv virtualenv greatexp
+                - pyenv global greatexp
+                - pip install --requirement demo/300-analytics/requirements.txt
+              runtime-versions:
+                python: 3.9
+            pre_build:
+              commands:
+                - mkdir -p demo/300-analytics/great_expectations/uncommitted
+                - envsubst < demo/300-analytics/template_great_expectations/config_variables.yml > demo/300-analytics/great_expectations/uncommitted/config_variables.yml
+            build:
+              commands:
+                - cd demo/300-analytics/great_expectations
+                - great_expectations checkpoint run 20141231
+        Type: CODEPIPELINE
+
   AnalyticsPipeline:
     Type: AWS::CodePipeline::Pipeline
     Properties:
@@ -72,6 +109,16 @@ Resources:
                 Version: "1"
               Configuration:
                 ProjectName: !Ref AnalyticsBuildProject
+              InputArtifacts:
+                - Name: repo
+            - Name: Data
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref AnalyticsDataTestProject
               InputArtifacts:
                 - Name: repo
         - Name: Build
