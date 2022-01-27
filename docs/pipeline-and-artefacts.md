@@ -1,14 +1,17 @@
-## Developing a build pipeline for our sales price prediction model
+## How can we do quality assurance<br/>for our sales price prediction model?
 
 ---
 
 ### Artefacts of the build pipeline
 
 - input artefacts
-    - **data preprocessing and model training code**<br/>from our GitHub repo
-    - **training data** from the marketplace database
+    - from our GitHub repository
+        - <em style="color: #1b91ff; font-style: normal">data preprocessing and model training code</em>
+    - from our marketplace database
+        - <em style="color: #1b91ff; font-style: normal">training data</em>
 - output artefact
-    - **trained model** in a serialized format<br/>(e.g. a pickle or ONNX file)
+    - <em style="color: #1b91ff; font-style: normal">trained model</em> in a serialized format<br/>
+      (e.g. a pickle or ONNX file)
 
 ---
 
@@ -35,6 +38,6 @@ D. Sculley and his nine co-authors have been working for several years on ML sys
   <span class="fragment highlight-blue" data-fragment-index="2">⬅ ?</span>
   </strong>
 - trained model
-  <strong class="fragment" data-fragment-index="2">
-  <span class="fragment highlight-blue" data-fragment-index="2">⬅ ?</span>
+  <strong class="fragment" data-fragment-index="3">
+  <span class="fragment highlight-blue" data-fragment-index="3">⬅ ?</span>
   </strong>
