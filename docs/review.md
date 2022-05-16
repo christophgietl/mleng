@@ -14,7 +14,7 @@
 
 #### Demo: house sales data in the database of the KC Real Estate Company
 
-[![The operational stack contains different versions of the house sales data.](images/operational-stack.png)](https://github.com/christophgietl/mleng/tree/main/demo/200-marketplace)
+[![The operational stack contains different versions of the house sales data.](images/operational-stack.png)](https://github.com/christophgietl/mlops/tree/main/demo/200-marketplace)
 
 Note:
 
@@ -54,7 +54,7 @@ Note:
 
 #### Demo: build pipeline for the sales price prediction service
 
-[![The build pipeline already contains code tests.](images/analytical-build-pipeline.png)](https://eu-central-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/demo-ml-ops-100-deployment-AnalyticsPipeline-1EJ4OWOAPDZUH/view?region=eu-central-1)
+[![The build pipeline already contains code tests.](images/analytical-build-pipeline.png)](https://eu-central-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/demo-ml-ops-100-deployment-AnalyticsPipeline-1LXVPAJKQM63N/view?region=eu-central-1)
 
 Note:
 
