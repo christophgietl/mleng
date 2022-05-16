@@ -1,0 +1,8 @@
+instance_id: 1222ec45-2c25-4b7f-b5a9-8d67e633bba1
+marketplace:
+  drivername: postgresql
+  host: $MP_DB_HOST
+  port: '$MP_DB_PORT'
+  username: $MP_DB_USER
+  password: $MP_DB_PASSWORD
+  database: postgres
