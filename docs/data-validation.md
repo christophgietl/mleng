@@ -32,7 +32,7 @@ Note: Explain this quote!
 
 #### Step 1: Install data validation tool
 
-[![Merged pull request for adding local environment for Great Expectations](images/add-local-great-expectations-environment.png)](https://github.com/christophgietl/mleng/pull/15/files)
+[![Merged pull request for adding local environment for Great Expectations](images/add-local-great-expectations-environment.png)](https://github.com/christophgietl/mlops/pull/15/files)
 
 ---
 
@@ -60,7 +60,7 @@ great_expectations checkpoint new kchs kchs
 
 #### Step 3: Push checkpoint configuration and add data validation to pipeline
 
-[![Pull request for adding data validation to pipeline](images/add-data-validation.png)](https://github.com/christophgietl/mleng/pull/16/commits)
+[![Pull request for adding data validation to pipeline](images/add-data-validation.png)](https://github.com/christophgietl/mlops/pull/16/commits)
 
 ---
 

@@ -14,7 +14,7 @@
 
 #### Demo: house sales data in the database of the KC Real Estate Company
 
-[![The operational stack contains different versions of the house sales data.](images/operational-stack.png)](https://github.com/christophgietl/mleng/tree/main/demo/200-marketplace)
+[![The operational stack contains different versions of the house sales data.](images/operational-stack.png)](https://github.com/christophgietl/mlops/tree/main/demo/200-marketplace)
 
 Note:
 
